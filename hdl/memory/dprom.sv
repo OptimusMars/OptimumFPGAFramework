@@ -1,19 +1,16 @@
-module dprom
-#(
-  parameter         DWIDTH      = 128,
-  parameter         AWIDTH      = 2,
-  parameter string  REGOUT      = "Y",
-  parameter string  INIT_FILE   = "" 
-)
-(
-  input                       clka,
-  input         [AWIDTH-1:0]  addra,
-  output logic  [DWIDTH-1:0]  qa,
-  
-  input                       clkb,
-  input         [AWIDTH-1:0]  addrb,
-  output logic  [DWIDTH-1:0]  qb 
-  
+module dprom #(
+  parameter DWIDTH    = 128,
+  parameter AWIDTH    = 2  ,
+  parameter REGOUT    = "Y",
+  parameter INIT_FILE = ""
+) (
+  input                     clka ,
+  input        [AWIDTH-1:0] addra,
+  output logic [DWIDTH-1:0] qa   ,
+  //!
+  input                     clkb ,
+  input        [AWIDTH-1:0] addrb,
+  output logic [DWIDTH-1:0] qb
 );
 
 localparam DEPTH = 1 << AWIDTH;

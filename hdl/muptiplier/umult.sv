@@ -29,7 +29,6 @@ generate
   end
   else
     $fatal("PIPELINE must be 0,1,2");
-  
 endgenerate
 
 endmodule

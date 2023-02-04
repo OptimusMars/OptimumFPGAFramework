@@ -2,7 +2,7 @@ module spram
 #(
   parameter         DWIDTH      = 128,
   parameter         AWIDTH      = 2,
-  parameter string  REGOUT      = "Y",
+  parameter         REGOUT      = "Y",
   parameter         INIT_FILE   = "" 
 )
 (

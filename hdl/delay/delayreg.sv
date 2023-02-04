@@ -1,16 +1,14 @@
 // Delay chain on registers
-module delayreg
-#(
-  parameter WIDTH = 16,   // Width of signals
-  parameter DELAY = 0     // Delay value
-)
-(
-  input                         clk,
-  input                         rst,
-  input                         ena, 
-  input   [WIDTH - 1:0]         data, 
-  output  [WIDTH - 1:0]         delay, 
-  output  [WIDTH*(DELAY+1)-1:0] taps
+module delayreg #(
+  parameter WIDTH = 16, // Width of signals
+  parameter DELAY = 0   // Delay value
+) (
+  input  wire                       clk  ,
+  input  wire                       rst    = '0,
+  input  wire                       ena    = '1,
+  input       [          WIDTH-1:0] data ,
+  output      [          WIDTH-1:0] delay,
+  output      [WIDTH*(DELAY+1)-1:0] taps
 );
 
 initial  if ( WIDTH == 0 ) $error("Width cannot be zero");

@@ -1,21 +1,3 @@
-//-------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------
-//-- project     : Project
-//-- version     : 1.0
-//-------------------------------------------------------------------------------
-//-- file name   : scaler.sv
-//-- created     : 19 марта 2020 г. : 16:07:57	
-//-- author      : Martynov Ivan
-//-- company     : Expert Electronix, Taganrog, Russia
-//-- target      : [x] simulation  [x] synthesis
-//-- technology  : [x] any
-//-- tools & o/s : quartus 13.1 & windows 7
-//-- dependency  :
-//-------------------------------------------------------------------------------
-//-- description : Fixed point signal scaller
-//-- 
-//--
-//-------------------------------------------------------------------------------
 // synopsys translate_off
 `timescale 1 ns / 1 ns
 // synopsys translate_on

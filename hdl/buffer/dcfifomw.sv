@@ -6,8 +6,8 @@ module dcfifomw
   // (SWIDTH/FWIDTH) or (FWIDTH/SWIDTH) must be integer
   parameter         SIZE        = 32,   // Size of fifo in words of FWIDTH
   parameter         SYNCLEN     = 3,    // Sincronization latency
-  parameter string  REGOUT      = "Y",
-  parameter string  PROTECTED   = "Y",
+  parameter         REGOUT      = "Y",
+  parameter         PROTECTED   = "Y",
   // locals
   parameter         FUWIDTH      = $clog2(SIZE),    // Don't assign this
   parameter         SUWIDTH       = (FWIDTH == SWIDTH) ? 
@@ -17,12 +17,13 @@ module dcfifomw
 )
 (
   input                             rst,
+  //!
   input                             clkw,
   input         [FWIDTH-1:0]        data,
   input                             write,
   output logic                      full,
   output logic  [FUWIDTH-1:0]       usedw,
-  
+  //!
   input                             clkr,
   input                             read,
   output logic                      empty,

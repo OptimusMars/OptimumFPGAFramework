@@ -2,7 +2,7 @@ module sprambe
 #(
   parameter         DWIDTH      = 128,
   parameter         AWIDTH      = 4,
-  parameter string  REGOUT      = "Y",
+  parameter         REGOUT      = "Y",
   parameter         INIT_FILE   = "", 
   parameter         BEWIDTH     = DWIDTH/8
 )

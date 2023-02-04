@@ -4,7 +4,7 @@ module bcnts
   parameter         MAX       = 8,
   parameter         STEP      = 1,
   parameter         START     = 0,
-  parameter string  BEHAVIOR  = "SATURATE",    // or "ROLL"
+  parameter         BEHAVIOR  = "SATURATE",    // or "ROLL"
   parameter         WIDTH     = $clog2(MAX)
 )
 (

@@ -2,7 +2,7 @@ module dprambe
 #(
   parameter         DWIDTH      = 16,
   parameter         AWIDTH      = 16,
-  parameter string  REGOUT      = "Y",
+  parameter         REGOUT      = "Y",
   parameter         INIT_FILE   = "",
   parameter         BEWIDTH     = DWIDTH/8
 )

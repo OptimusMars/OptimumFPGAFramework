@@ -1,27 +1,26 @@
-module dcfifo
-#(
-  parameter         WIDTH       = 16,
-  parameter         SIZE        = 32,
-  parameter         SYNCLEN     = 3,
-  parameter string  REGOUT      = "Y",
-  parameter string  PROTECTED   = "Y",
-  parameter         UWIDTH      = $clog2(SIZE)
-)
-(
-  input                             rst,
-  input                             clkw,
-  input         [WIDTH-1:0]         data,
-  input                             write,
-  output logic                      full,
-  output logic  [UWIDTH-1:0]        usedw,
-  
-  input                             clkr,
-  input                             read,
-  output logic                      empty,
-  output logic  [UWIDTH-1:0]        usedr,
-  output logic  [WIDTH-1:0]         q,
-  
-  output logic                      clkhalt
+module dcfifo #(
+  parameter WIDTH     = 16          ,
+  parameter SIZE      = 32          ,
+  parameter SYNCLEN   = 3           ,
+  parameter REGOUT    = "Y"         ,
+  parameter PROTECTED = "Y"         ,
+  parameter UWIDTH    = $clog2(SIZE)
+) (
+  input                     rst    ,
+  //!
+  input                     clkw   ,
+  input        [ WIDTH-1:0] data   ,
+  input                     write  ,
+  output logic              full   ,
+  output logic [UWIDTH-1:0] usedw  ,
+  //!
+  input                     clkr   ,
+  input                     read   ,
+  output logic              empty  ,
+  output logic [UWIDTH-1:0] usedr  ,
+  output logic [ WIDTH-1:0] q      ,
+
+  output logic              clkhalt
 );
 
 initial begin

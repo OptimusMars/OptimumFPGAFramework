@@ -2,7 +2,7 @@
 module bcntsync
 #(
   parameter WIDTH = 16,
-  parameter SYNCLEN = 2
+  parameter SYNCLEN = 3
 )
 (
   input   [WIDTH-1:0] bcnti,

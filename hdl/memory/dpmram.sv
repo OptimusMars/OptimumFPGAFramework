@@ -1,29 +1,27 @@
 // Mixed Width Dual port Ram
-module dpmram 
-#(
-  parameter         FDWIDTH     = 32,   // First Data Width
-  parameter         FAWIDTH     = 8,    // First Adderss Width
-  parameter         SDWIDTH     = 16,    // Second Data Width
+module dpmram #(
+  parameter FDWIDTH   = 32                    , // First Data Width
+  parameter FAWIDTH   = 8                     , // First Adderss Width
+  parameter SDWIDTH   = 16                    , // Second Data Width
   // (SDWIDTH/FDWIDTH) or (FDWIDTH/SDWIDTH) must be EVEN
-  parameter string  REGOUT      = "Y",
-  parameter         INIT_FILE   = "",
-  parameter         SAWIDTH     = (FDWIDTH == SDWIDTH) ? 
-                                  FAWIDTH : ((FDWIDTH > SDWIDTH) ? 
-                                  (FAWIDTH + $clog2(FDWIDTH/SDWIDTH)) :
-                                  (FAWIDTH - $clog2(SDWIDTH/FDWIDTH)) )  // Don't assign this
-)
-(
-  input                         clka,
-  input                         wea, 
-  input         [FAWIDTH-1:0]   addra,
-  input  logic  [FDWIDTH-1:0]   dataa,
-  output logic  [FDWIDTH-1:0]   qa,
-  
-  input                         clkb,
-  input                         web,
-  input         [SAWIDTH-1:0]   addrb,  
-  input  logic  [SDWIDTH-1:0]   datab,
-  output logic  [SDWIDTH-1:0]   qb
+  parameter REGOUT    = "Y"                   ,
+  parameter INIT_FILE = ""                    ,
+  parameter SAWIDTH   = (FDWIDTH == SDWIDTH) ?
+  FAWIDTH : ((FDWIDTH > SDWIDTH) ?
+  (FAWIDTH + $clog2(FDWIDTH/SDWIDTH)) :
+  (FAWIDTH - $clog2(SDWIDTH/FDWIDTH)) )  // Don't assign this
+) (
+  input                      clka ,
+  input                      wea  ,
+  input        [FAWIDTH-1:0] addra,
+  input  logic [FDWIDTH-1:0] dataa,
+  output logic [FDWIDTH-1:0] qa   ,
+  //!
+  input                      clkb ,
+  input                      web  ,
+  input        [SAWIDTH-1:0] addrb,
+  input  logic [SDWIDTH-1:0] datab,
+  output logic [SDWIDTH-1:0] qb
 );
 
 initial begin

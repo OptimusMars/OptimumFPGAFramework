@@ -2,7 +2,7 @@ module dpram
 #(
   parameter         DWIDTH      = 16,
   parameter         AWIDTH      = 10,
-  parameter string  REGOUT      = "Y",
+  parameter         REGOUT      = "Y",
   parameter         INIT_FILE   = ""
 )
 (

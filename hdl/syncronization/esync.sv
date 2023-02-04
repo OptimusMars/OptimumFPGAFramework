@@ -12,7 +12,7 @@ parameter LEN = 3;
 
 initial
 if (LEN < 2)
-  $error("LEN must be greater than 1");
+  $error("LEN must be greater than 2");
 
 bit toggle;
   

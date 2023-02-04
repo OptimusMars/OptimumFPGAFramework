@@ -1,12 +1,10 @@
-module clkdet
-#(
-  parameter string FILTER_OUTPUT = "YES",   // enable lpf 
-  parameter CNT_WIDTH = 5 
-)
-(
-  input clkref,       // Reference clock. F_ref must be less than F_test
-  input clktst,       // Test Clock
-  output exist        // 1 - exist; 0 - not exist
+module clkdet #(
+  parameter FILTER_OUTPUT = "YES", // enable lpf
+  parameter CNT_WIDTH     = 5
+) (
+  input  clkref, // Reference clock. F_ref must be less than F_test
+  input  clktst, // Test Clock
+  output exist   // 1 - exist; 0 - not exist
 );
 
 localparam SYNC_STAGE = 2;   // Number of sync stages
