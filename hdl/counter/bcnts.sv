@@ -11,7 +11,7 @@ module bcnts
   input                     clk,
   input                     aclr,
   input                     ena,
-  input                     dir,
+  input wire                dir = '1,
   output logic              ovf,
   output logic [WIDTH-1:0]  q
 );

@@ -1,3 +1,6 @@
+`ifndef __MACRO__
+`define __MACRO__
+
 `define GET_FIELD_OFFSET(struct_name, field_name, bit_offset)\
 struct_name = '0;\
 struct_name.field_name = '1;\
@@ -22,3 +25,8 @@ endfunction
 
 `define MAX(FIRST, SECOND) (((FIRST) > (SECOND)) ? (FIRST) : (SECOND))
 `define MIN(FIRST, SECOND) (((FIRST) > (SECOND)) ? (SECOND) : (FIRST))
+
+`define ALIGNED(FIRST, SECOND) ((((FIRST) % (SECOND)) == 0) ? 1 : 0)
+
+`endif
+
