@@ -31,8 +31,8 @@ always_ff @(posedge clki or posedge rst) begin
   end
 end
 
-esync i_esync (.rst(rst), .clki(clki), .clko(clko), .in(change), .out(dval));
-esync i_esync (.rst(rst), .clki(clko), .clko(clki), .in(dval), .out(ack));
+esync i0_esync (.rst(rst), .clki(clki), .clko(clko), .in(change), .out(dval));
+esync i1_esync (.rst(rst), .clki(clko), .clko(clki), .in(dval), .out(ack));
 
 always_ff @(posedge clko) dout <= dval ? hold : dout;
 
