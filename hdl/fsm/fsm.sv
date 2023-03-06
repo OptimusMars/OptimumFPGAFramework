@@ -1,28 +1,18 @@
-
-`include "fsm_transition.sv"
-
 module fsm
-#(
-  parameter INPUTS = 8,
-  parameter STATES = 8,
-  parameter STWIDTH = $clog2(STATES)
-)
-(
-	input                                   clk,
-	input                                   rst,
-	input                  [INPUTS-1:0]     in,
-	input  fsm_transition #(INPUTS, STATES) transitions [STATES-1:0],
-	output logic           [STWIDTH-1:0]    state
-);
-	
-function [STWIDTH-1:0] next_state(
-  input logic [INPUTS-1:0] ins, 
-  input fsm_transition #(INPUTS, STATES) transition
+	import fsm_pkg::*;
+#(parameter
+	     INPUTS       = 8   ,
+	type state_type_t = byte
+) (
+	input                clk  ,
+	input                rst  ,
+	input  [INPUTS-1:0]  in   ,
+	input  state_table_t tbl,
+	output state_type_t  state
 );
 
-    
-endfunction
-
-
+always_ff @(posedge clk, posedge rst)
+	if(rst) state <= '0;
+	else state <= state_type_t'(fsm_pkg::next_state(in, tbl.trans[byte'(state)]));
 	
 endmodule : fsm

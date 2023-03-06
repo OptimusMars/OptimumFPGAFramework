@@ -67,8 +67,8 @@ typedef enum int {  ST_IDLE = 0,      //! Wait for transaction
 fsm_t fsm;
 logic transaction_complete;
 logic transaction_go;
-AxiMasterRdCtrl_t ctrl;
-AxiMasterRdStatus_t status;
+AxiHostRdCtrl_t ctrl;
+AxiHostRdStatus_t status;
 
 task axi_ar_clear();
   m_axi_arid    <= '0;

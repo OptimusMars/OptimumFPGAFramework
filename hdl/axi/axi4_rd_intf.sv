@@ -4,18 +4,18 @@ interface axi4_rd_intf (
   parameter IDWIDTH = 1
 );
   //! AXI Master
-  logic [IDWIDTH-1:0] arid    ;
-  logic [ AWIDTH-1:0] araddr  ;
-  logic [        7:0] arlen   ;
-  logic [        2:0] arsize  ;
-  logic [        1:0] arburst ;
-  logic               arlock  ;
-  logic [        3:0] arcache ;
-  logic [        2:0] arprot  ;
-  logic [        3:0] arregion;
-  logic [        3:0] arqos   ;
-  logic               arvalid ;
-  logic               arready ;
+  logic [IDWIDTH-1:0] id    ;
+  logic [ AWIDTH-1:0] addr  ;
+  logic [        7:0] len   ;
+  logic [        2:0] size  ;
+  logic [        1:0] burst ;
+  logic               lock  ;
+  logic [        3:0] cache ;
+  logic [        2:0] prot  ;
+  logic [        3:0] region;
+  logic [        3:0] qos   ;
+  logic               valid ;
+  logic               ready ;
   //!
   logic [IDWIDTH-1:0] rid   ;
   logic [ DWIDTH-1:0] rdata ;
@@ -25,18 +25,18 @@ interface axi4_rd_intf (
   logic               rready;
 
   modport host (
-    output arid    ,
-    output araddr  ,
-    output arlen   ,
-    output arsize  ,
-    output arburst ,
-    output arlock  ,
-    output arcache ,
-    output arprot  ,
-    output arregion,
-    output arqos   ,
-    output arvalid ,
-    input  arready ,
+    output id    ,
+    output addr  ,
+    output len   ,
+    output size  ,
+    output burst ,
+    output lock  ,
+    output cache ,
+    output prot  ,
+    output region,
+    output qos   ,
+    output valid ,
+    input  ready ,
     //!
     input  rid   ,
     input  rdata ,
@@ -47,18 +47,18 @@ interface axi4_rd_intf (
   );
 
   modport agent (
-    input  arid    ,
-    input  araddr  ,
-    input  arlen   ,
-    input  arsize  ,
-    input  arburst ,
-    input  arlock  ,
-    input  arcache ,
-    input  arprot  ,
-    input  arregion,
-    input  arqos   ,
-    input  arvalid ,
-    output arready ,
+    input  id    ,
+    input  addr  ,
+    input  len   ,
+    input  size  ,
+    input  burst ,
+    input  lock  ,
+    input  cache ,
+    input  prot  ,
+    input  region,
+    input  qos   ,
+    input  valid ,
+    output ready ,
     //!
     output rid   ,
     output rdata ,
