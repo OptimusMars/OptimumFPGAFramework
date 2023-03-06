@@ -4,7 +4,7 @@
 
 // It will be Xilinx AXI Datamover full analog
 
-module axi_master_rd
+module axi_host_rd
   import axi_pkg::*;
 #(
   parameter AXI_DWIDTH  = 128       ,
@@ -170,7 +170,4 @@ always_ff @(posedge aclk or negedge areset_n) begin
   end
 end
 
-
-
-
-endmodule : axi_master_rd
+endmodule

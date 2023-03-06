@@ -1,80 +1,80 @@
 interface axi4lite_intf #(
-    parameter DATA_WIDTH = 32,
-    parameter ADDR_WIDTH = 32
+    parameter DWIDTH = 32,
+    parameter AWIDTH = 32
   );
-  logic                  AWREADY;
-  logic                  AWVALID;
-  logic [ADDR_WIDTH-1:0] AWADDR ;
-  logic [           2:0] AWPROT ;
+  logic                awready;
+  logic                awvalid;
+  logic [AWIDTH-1:0]   awaddr ;
+  logic [       2:0]   awprot ;
+  //!
+  logic                wready;
+  logic                wvalid;
+  logic [  DWIDTH-1:0] wdata ;
+  logic [DWIDTH/8-1:0] wstrb ;
+  //!
+  logic                bready;
+  logic                bvalid;
+  logic [1:0]          bresp ;
+  //!
+  logic                arready;
+  logic                arvalid;
+  logic [AWIDTH-1:0]   araddr ;
+  logic [       2:0]   arprot ;
+  //!
+  logic                rready;
+  logic                rvalid;
+  logic [DWIDTH-1:0]   rdata ;
+  logic [       1:0]   rresp ;
 
-  logic                    WREADY;
-  logic                    WVALID;
-  logic [  DATA_WIDTH-1:0] WDATA ;
-  logic [DATA_WIDTH/8-1:0] WSTRB ;
+  modport master (
+    input   awready,
+    output  awvalid,
+    output  awaddr,
+    output  awprot,
 
-  logic       BREADY;
-  logic       BVALID;
-  logic [1:0] BRESP ;
+    input   wready,
+    output  wvalid,
+    output  wdata,
+    output  wstrb,
 
-  logic                  ARREADY;
-  logic                  ARVALID;
-  logic [ADDR_WIDTH-1:0] ARADDR ;
-  logic [           2:0] ARPROT ;
+    output  bready,
+    input   bvalid,
+    input   bresp,
 
-  logic                  RREADY;
-  logic                  RVALID;
-  logic [DATA_WIDTH-1:0] RDATA ;
-  logic [           1:0] RRESP ;
+    input   arready,
+    output  arvalid,
+    output  araddr,
+    output  arprot,
 
-modport master (
-  input AWREADY,
-  output AWVALID,
-  output AWADDR,
-  output AWPROT,
+    output  rready,
+    input   rvalid,
+    input   rdata,
+    input   rresp
+  );
 
-  input WREADY,
-  output WVALID,
-  output WDATA,
-  output WSTRB,
+  modport slave (
+    output  awready,
+    input   awvalid,
+    input   awaddr,
+    input   awprot,
 
-  output BREADY,
-  input BVALID,
-  input BRESP,
+    output  wready,
+    input   wvalid,
+    input   wdata,
+    input   wstrb,
 
-  input ARREADY,
-  output ARVALID,
-  output ARADDR,
-  output ARPROT,
+    input   bready,
+    output  bvalid,
+    output  bresp,
 
-  output RREADY,
-  input RVALID,
-  input RDATA,
-  input RRESP
-);
+    output  arready,
+    input   arvalid,
+    input   araddr,
+    input   arprot,
 
-modport slave (
-  output AWREADY,
-  input AWVALID,
-  input AWADDR,
-  input AWPROT,
-
-  output WREADY,
-  input WVALID,
-  input WDATA,
-  input WSTRB,
-
-  input BREADY,
-  output BVALID,
-  output BRESP,
-
-  output ARREADY,
-  input ARVALID,
-  input ARADDR,
-  input ARPROT,
-
-  input RREADY,
-  output RVALID,
-  output RDATA,
-  output RRESP
-);
+    input   rready,
+    output  rvalid,
+    output  rdata,
+    output  rresp
+  );
 endinterface
