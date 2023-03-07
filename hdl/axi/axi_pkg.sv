@@ -117,7 +117,7 @@ task axiAwSend(axi4_wr_intf rd(), AxiMasterRdCtrl_t ctrl);
 endtask
 
 function logic axiArAccepted(axi4_rd_intf rd());
-  return axi_pkg::axiAccepted(rd.rvalid, m_axi_arready);
+  return axi_pkg::axiAccepted(rd.valid, rd.ready);
 endfunction
 
 task axi_r_accept_data();
