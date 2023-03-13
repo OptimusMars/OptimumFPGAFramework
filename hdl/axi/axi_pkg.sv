@@ -1,7 +1,6 @@
-package axi_pkg;
-
 // Read this for information
 // AMBA® AXI and ACE Protocol Specification
+package axi_pkg;
 
 typedef enum logic [2:0] {
   SIZE_1 = '0,
@@ -36,7 +35,7 @@ typedef struct packed {
 
 typedef struct packed {
   logic [31:0] address;
-  logic [15:0] bytes;   // In bytes
+  logic [15:0] bytes;   
   AxiSize_t    size;
   AxiBurst_t   burst;
 } AxiHostRdCtrl_t;
@@ -70,7 +69,7 @@ function logic axiSuccess(AxiResp_t resp);
   return (resp == OKAY) || (resp == EXOKAY);
 endfunction
 
-task axiArClear(axi4_rd_intf rd());
+task axiArClear(axi4_rd_intf rd);
   rd.id    <= '0;
   rd.addr  <= '0;
   rd.len   <= '0;
@@ -84,7 +83,7 @@ task axiArClear(axi4_rd_intf rd());
   rd.valid <= '0;
 endtask
 
-task axiAwClear(axi4_wr_intf wr());
+task axiAwClear(axi4_wr_intf wr);
   wr.id    <= '0;
   wr.addr  <= '0;
   wr.len   <= '0;
@@ -98,7 +97,7 @@ task axiAwClear(axi4_wr_intf wr());
   wr.valid <= '0;
 endtask
 
-task axiArSend(axi4_rd_intf rd(), AxiMasterRdCtrl_t ctrl);
+task axiArSend(axi4_rd_intf rd, AxiMasterRdCtrl_t ctrl);
   rd.id    <= rd.id + 1'b1;
   rd.addr  <= ctrl.address;
   rd.len   <= axi_pkg::axiLen(ctrl, ctrl.size);
@@ -107,24 +106,21 @@ task axiArSend(axi4_rd_intf rd(), AxiMasterRdCtrl_t ctrl);
   rd.burst <= ctrl.burst;
 endtask
 
-task axiAwSend(axi4_wr_intf rd(), AxiMasterRdCtrl_t ctrl);
-  rd.id    <= rd.id + 1'b1;
-  rd.addr  <= ctrl.address;
-  rd.len   <= axi_pkg::axiLen(ctrl, ctrl.size);
-  rd.size  <= ctrl.size;
-  rd.valid <= '1;
-  rd.burst <= ctrl.burst;
+task axiAwSend(axi4_wr_intf wr, AxiMasterRdCtrl_t ctrl);
+  wr.id    <= wr.id + 1'b1;
+  wr.addr  <= ctrl.address;
+  wr.len   <= axi_pkg::axiLen(ctrl, ctrl.size);
+  wr.size  <= ctrl.size;
+  wr.valid <= '1;
+  wr.burst <= ctrl.burst;
 endtask
 
-function logic axiArAccepted(axi4_rd_intf rd());
+function logic axiArAccepted(axi4_rd_intf rd);
   return axi_pkg::axiAccepted(rd.valid, rd.ready);
 endfunction
 
-task axi_r_accept_data();
-  m_axis_tdata     = m_axi_rdata;
-  m_axis_tlast     = m_axi_rlast;
-  m_axis_tvalid    = m_axi_rvalid;
-endtask
-
+function logic axiArAccepted(axi4_rd_intf rd);
+  return axi_pkg::axiAccepted(rd.valid, rd.ready);
+endfunction
 
 endpackage
