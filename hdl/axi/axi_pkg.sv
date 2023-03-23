@@ -116,11 +116,11 @@ task axiAwSend(axi4_wr_intf wr, AxiMasterRdCtrl_t ctrl);
 endtask
 
 function logic axiArAccepted(axi4_rd_intf rd);
-  return axi_pkg::axiAccepted(rd.valid, rd.ready);
+  return axiAccepted(rd.avalid, rd.aready);
 endfunction
 
-function logic axiArAccepted(axi4_rd_intf rd);
-  return axi_pkg::axiAccepted(rd.valid, rd.ready);
+function logic axiAwAccepted(axi4_wr_intf wr);
+  return axiAccepted(wr.avalid, wr.aready);
 endfunction
 
 endpackage

@@ -4,18 +4,18 @@ interface axi4_rd_intf (
   parameter IDWIDTH = 1
 );
   //! AXI Master
-  logic [IDWIDTH-1:0] id    ;
-  logic [ AWIDTH-1:0] addr  ;
-  logic [        7:0] len   ;
-  logic [        2:0] size  ;
-  logic [        1:0] burst ;
-  logic               lock  ;
-  logic [        3:0] cache ;
-  logic [        2:0] prot  ;
-  logic [        3:0] region;
-  logic [        3:0] qos   ;
-  logic               valid ;
-  logic               ready ;
+  logic [IDWIDTH-1:0] aid    ;
+  logic [ AWIDTH-1:0] aaddr  ;
+  logic [        7:0] alen   ;
+  logic [        2:0] asize  ;
+  logic [        1:0] aburst ;
+  logic               alock  ;
+  logic [        3:0] acache ;
+  logic [        2:0] aprot  ;
+  logic [        3:0] aregion;
+  logic [        3:0] aqos   ;
+  logic               avalid ;
+  logic               aready ;
   //!
   logic [IDWIDTH-1:0] rid   ;
   logic [ DWIDTH-1:0] rdata ;
@@ -25,18 +25,18 @@ interface axi4_rd_intf (
   logic               rready;
 
   modport host (
-    output id    ,
-    output addr  ,
-    output len   ,
-    output size  ,
-    output burst ,
-    output lock  ,
-    output cache ,
-    output prot  ,
-    output region,
-    output qos   ,
-    output valid ,
-    input  ready ,
+    output aid    ,
+    output aaddr  ,
+    output alen   ,
+    output asize  ,
+    output aburst ,
+    output alock  ,
+    output acache ,
+    output aprot  ,
+    output aregion,
+    output aqos   ,
+    output avalid ,
+    input  aready ,
     //!
     input  rid   ,
     input  rdata ,
@@ -47,18 +47,18 @@ interface axi4_rd_intf (
   );
 
   modport agent (
-    input  id    ,
-    input  addr  ,
-    input  len   ,
-    input  size  ,
-    input  burst ,
-    input  lock  ,
-    input  cache ,
-    input  prot  ,
-    input  region,
-    input  qos   ,
-    input  valid ,
-    output ready ,
+    input  aid    ,
+    input  aaddr  ,
+    input  alen   ,
+    input  asize  ,
+    input  aburst ,
+    input  alock  ,
+    input  acache ,
+    input  aprot  ,
+    input  aregion,
+    input  aqos   ,
+    input  avalid ,
+    output aready ,
     //!
     output rid   ,
     output rdata ,

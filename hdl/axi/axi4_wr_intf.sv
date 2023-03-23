@@ -3,16 +3,16 @@ interface axi4_wr_intf #(
     parameter AWIDTH = 32,
     parameter IDWIDTH = 4
   );
-  logic [ IDWIDTH-1:0] id   ;
-  logic [  AWIDTH-1:0] addr ;
-  logic [         7:0] len  ;
-  logic [         2:0] size ;
-  logic [         1:0] burst;
-  logic [         2:0] prot ;
-  logic [         3:0] cache;
-  logic [         3:0] user ;
-  logic                valid;
-  logic                ready;
+  logic [ IDWIDTH-1:0] aid   ;
+  logic [  AWIDTH-1:0] aaddr ;
+  logic [         7:0] alen  ;
+  logic [         2:0] asize ;
+  logic [         1:0] aburst;
+  logic [         2:0] aprot ;
+  logic [         3:0] acache;
+  logic [         3:0] auser ;
+  logic                avalid;
+  logic                aready;
   
   logic [  DWIDTH-1:0] data  ;
   logic [DWIDTH/8-1:0] strb  ;
@@ -25,18 +25,18 @@ interface axi4_wr_intf #(
   logic                ready ;
 
   modport host (
-    output id    ,
-    output addr  ,
-    output len   ,
-    output size  ,
-    output burst ,
-    output lock  ,
-    output cache ,
-    output prot  ,
-    output region,
-    output qos   ,
-    output valid ,
-    input  ready ,
+    output aid    ,
+    output aaddr  ,
+    output alen   ,
+    output asize  ,
+    output aburst ,
+    output alock  ,
+    output acache ,
+    output aprot  ,
+    output aregion,
+    output aqos   ,
+    output avalid ,
+    input  aready ,
     //!
     output data  ,
     output strb  ,
@@ -50,18 +50,18 @@ interface axi4_wr_intf #(
   );
 
   modport agent (
-    input   id    ,
-    input   addr  ,
-    input   len   ,
-    input   size  ,
-    input   burst ,
-    input   lock  ,
-    input   cache ,
-    input   prot  ,
-    input   region,
-    input   qos   ,
-    input   valid ,
-    output  ready ,
+    input   aid    ,
+    input   aaddr  ,
+    input   alen   ,
+    input   asize  ,
+    input   aburst ,
+    input   alock  ,
+    input   acache ,
+    input   aprot  ,
+    input   aregion,
+    input   aqos   ,
+    input   avalid ,
+    output  aready ,
     //!
     input   data  ,
     input   strb  ,

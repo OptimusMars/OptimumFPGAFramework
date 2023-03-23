@@ -26,7 +26,7 @@ endfunction
 `define MAX(FIRST, SECOND) (((FIRST) > (SECOND)) ? (FIRST) : (SECOND))
 `define MIN(FIRST, SECOND) (((FIRST) > (SECOND)) ? (SECOND) : (FIRST))
 
-`define ALIGNED(FIRST, SECOND) ((((FIRST) % (SECOND)) == 0) ? 1 : 0)
+`define ALIGNED(THIS, ALIGNEL_TO) ((((THIS) % (ALIGNEL_TO)) == 0) ? 1 : 0)
 
 // In Range Strict, 
 `define IN_RNG_SN(ITEM, LEFT, RIGHT) (((ITEM) > (LEFT)) && ((ITEM) <= (RIGHT)))
@@ -39,13 +39,14 @@ typedef struct packed { \
     logic        [INPUTS-1:0] sige; \
     byte         [INPUTS-1:0] prio; \
     TYPE         [INPUTS-1:0] next; \
-} fsm_tr_`TYPE;
+} fsm_tr_`TYPE
+
+`define CREATE_TBL(TYPE) fsm_tr_`TYPE tbl
 
 `define DECLARE_TABLE(TYPE, STATES) \
 typedef struct packed { \
     fsm_tr_`TYPE [STATES-1:0] trans; \
 } state_table_t
-
 
 `endif
 
