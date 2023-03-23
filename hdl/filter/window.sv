@@ -27,10 +27,12 @@ delayreg #(.WIDTH(DWIDTH), .DELAY(SAMPLES)) i_delayreg (
 );
 
 always @ (posedge clk_i or posedge rst_i)
-  if (rst_i) accum <= '0;
-  else if (sclr_i) accum <= '0;
-  else if (dval_i) accum <= accum + (data_i - data_first);
+  if      (rst_i)   accum <= '0;
+  else if (sclr_i)  accum <= '0;
+  else if (dval_i)  accum <= accum + (data_i - data_first);
   
-assign mean_o = accum >>> $clog2(SAMPLES);
+assign mean_o = ((SAMPLES % 2) == 0) ? 
+                (accum >>> $clog2(SAMPLES)) : 
+                ((accum >>> $clog2(SAMPLES)) + (accum >>> ($clog2(SAMPLES) + 1)));
 
 endmodule 
