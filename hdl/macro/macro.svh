@@ -34,6 +34,7 @@ endfunction
 `define IN_RNG_NS(ITEM, LEFT, RIGHT) (((ITEM) >= (LEFT)) && ((ITEM) < (RIGHT)))
 `define IN_RNG_NN(ITEM, LEFT, RIGHT) (((ITEM) >= (LEFT)) && ((ITEM) <= (RIGHT)))
 
+<<<<<<< HEAD
 `define DECLARE_STATE_TRANS(TYPE, INPUTS) \
 typedef struct packed { \
     logic        [INPUTS-1:0] sige; \
@@ -47,6 +48,9 @@ typedef struct packed { \
 typedef struct packed { \
     fsm_tr_`TYPE [STATES-1:0] trans; \
 } state_table_t
+=======
+`define FLOOR(x) ((rtoi(x) > x) ? rtoi(x) - 1 : rtoi(x))
+>>>>>>> 0b87a2967060447cc59bf17bfad7e6422ca5b761
 
 `endif
 
