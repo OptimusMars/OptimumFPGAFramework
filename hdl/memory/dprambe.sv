@@ -21,26 +21,26 @@ module dprambe
   input         [BEWIDTH-1:0] beb,
   output logic  [DWIDTH-1:0]  qb
 );
-localparam DEPTH = 1<<AWIDTH;
+localparam DEPTH = (1<<AWIDTH)-1;
 
 initial begin
   if(DWIDTH % 8 != 0) $error("DWIDTH must be even of 8");
 end
 
 // Declare the RAM variable
-logic [DWIDTH-1:0] mem[DEPTH] /* synthesis syn_ramstyle="block_ram" */;
+logic [DWIDTH-1:0] mem[DEPTH:0] /* synthesis syn_ramstyle="block_ram" */;
 
 initial if (INIT_FILE != "") $readmemh(INIT_FILE, mem);
 
 always_ff @ (posedge clka) begin
   for(int i = 0; i <= BEWIDTH; i++) begin
-    if (bea[i] && wea) mem[addra/8 + i*8 +:8] <= dataa[i*8 +:8];
+    if (bea[i] && wea) mem[addra][i*8 +:8] <= dataa[i*8 +:8];
   end
 end
 
 always_ff @ (posedge clkb) begin
   for(int i = 0; i <= BEWIDTH; i++) begin
-    if (beb[i] && web) mem[addrb/8 + i*8 +:8] <= datab[i*8 +:8];
+    if (beb[i] && web) mem[addrb][i*8 +:8] <= datab[i*8 +:8];
   end
 end
 
