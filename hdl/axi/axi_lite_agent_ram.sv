@@ -32,7 +32,7 @@ delayreg #(.WIDTH(1), .DELAY(2)) i_delayreg (
   .clk  (clk        ),
   .rst  (rst        ),
   .ena  ('1         ),
-  .data (axi.arready),
+  .data (axi.arvalid),
   .delay(axi.rvalid ),
   .taps (           )
 );
