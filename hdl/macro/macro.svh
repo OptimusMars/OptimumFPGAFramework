@@ -15,10 +15,20 @@ end
 `define STRINGIFY(x) `"x`"
 
 `define REVERSE_VECTOR_FUNC(post, width) \
-function logic [width-1:0] reverse_vector_`post(input logic [width-1:0] din);  \
+function logic [width-1:0] reverse_vector_`post(logic [width-1:0] din);  \
     logic [width-1:0] ret = '0;        \
     for (int i = 0; i < width; i++) begin  \
         ret[i] = din[width-1-i];   \   
+    end \
+    return ret; \
+endfunction
+
+`define REVERSE_BYTES_FUNC(post, width) \
+function logic [width-1:0] reverse_bytes_`post(logic [width-1:0] din);  \
+    logic [width-1:0] ret = '0;        \
+    int bytes = width/8;    \
+    for (int i = 0; i < bytes; i++) begin  \
+        ret[8*(bytes-i-1) +:8] = din[8*i +:8];   \   
     end \
     return ret; \
 endfunction
@@ -34,7 +44,6 @@ endfunction
 `define IN_RNG_NS(ITEM, LEFT, RIGHT) (((ITEM) >= (LEFT)) && ((ITEM) < (RIGHT)))
 `define IN_RNG_NN(ITEM, LEFT, RIGHT) (((ITEM) >= (LEFT)) && ((ITEM) <= (RIGHT)))
 
-<<<<<<< HEAD
 `define DECLARE_STATE_TRANS(TYPE, INPUTS) \
 typedef struct packed { \
     logic        [INPUTS-1:0] sige; \
@@ -48,9 +57,8 @@ typedef struct packed { \
 typedef struct packed { \
     fsm_tr_`TYPE [STATES-1:0] trans; \
 } state_table_t
-=======
+
 `define FLOOR(x) ((rtoi(x) > x) ? rtoi(x) - 1 : rtoi(x))
->>>>>>> 0b87a2967060447cc59bf17bfad7e6422ca5b761
 
 `endif
 
