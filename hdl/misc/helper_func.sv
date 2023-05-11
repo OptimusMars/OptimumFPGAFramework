@@ -9,5 +9,4 @@ function int ones_count(longint din, int width);
     return res;
 endfunction
 
-  
 endpackage : helper_func

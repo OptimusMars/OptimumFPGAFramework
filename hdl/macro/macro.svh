@@ -18,7 +18,7 @@ end
 function logic [width-1:0] reverse_vector_`post(logic [width-1:0] din);  \
     logic [width-1:0] ret = '0;        \
     for (int i = 0; i < width; i++) begin  \
-        ret[i] = din[width-1-i];   \   
+        ret[i] = din[width-1-i];   \
     end \
     return ret; \
 endfunction
@@ -28,7 +28,7 @@ function logic [width-1:0] reverse_bytes_`post(logic [width-1:0] din);  \
     logic [width-1:0] ret = '0;        \
     int bytes = width/8;    \
     for (int i = 0; i < bytes; i++) begin  \
-        ret[8*(bytes-i-1) +:8] = din[8*i +:8];   \   
+        ret[8*(bytes-i-1) +:8] = din[8*i +:8];   \
     end \
     return ret; \
 endfunction

@@ -1,27 +1,27 @@
 interface axi4lite_intf;
-  logic        awready;
-  logic        awvalid;
-  logic [31:0] awaddr ;
-  logic [ 2:0] awprot ;
+  logic         awready;
+  logic         awvalid;
+  logic [31:0]  awaddr ;
+  logic [ 2:0]  awprot ;
   //!
-  logic        wready;
-  logic        wvalid;
-  logic [31:0] wdata ;
-  logic [ 3:0] wstrb ;
+  logic         wready;
+  logic         wvalid;
+  logic [31:0]  wdata ;
+  logic [ 3:0]  wstrb ;
   //!
-  logic       bready;
-  logic       bvalid;
-  logic [1:0] bresp ;
+  logic         bready;
+  logic         bvalid;
+  logic [1:0]   bresp ;
   //!
-  logic        arready;
-  logic        arvalid;
-  logic [31:0] araddr ;
-  logic [ 2:0] arprot ;
+  logic         arready;
+  logic         arvalid;
+  logic [31:0]  araddr ;
+  logic [ 2:0]  arprot ;
   //!
-  logic        rready;
-  logic        rvalid;
-  logic [31:0] rdata ;
-  logic [ 1:0] rresp ;
+  logic         rready;
+  logic         rvalid;
+  logic [31:0]  rdata ;
+  logic [ 1:0]  rresp ;
 
   modport master (
     input   awready,
